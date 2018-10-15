@@ -32,7 +32,7 @@ CREATE TABLE article (
 	articleContent TEXT(21845),
 	articleDate DATETIME(6) NOT NULL,
 	articleImage VARCHAR(128),
-	INDEX(articleAuthorId), --add in index
+	INDEX(articleAuthorId), -- add in index
 	FOREIGN KEY (articleAuthorId) REFERENCES author(authorId),
 	PRIMARY KEY(articleId)
 );
