@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="df08e7eb-2688-4961-8477-b2483f76919d" name="snap-create-table" url="http://bootcamp-coders.cnm.edu">
+        <fileTransfer host="bootcamp-coders.cnm.edu" port="22" rootFolder="/home/mbovee/public_html/snap-create-table" accessType="SFTP" authAgent="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
