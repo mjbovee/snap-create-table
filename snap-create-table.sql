@@ -7,12 +7,13 @@ DROP TABLE IF EXISTS articleTag;
 CREATE TABLE author (
 	authorId BINARY(16) NOT NULL,
 	authorAvatarUrl VARCHAR(128),
-	authorActivationToken CHAR(32) NOT NULL,
+	authorActivationToken CHAR(32), -- NOT NULL: we want activation token to be nullable!
 	authorEmail VARCHAR(128) NOT NULL,
 	authorHash CHAR(97) NOT NULL,
 	authorUserName VARCHAR(32) NOT NULL,
 	UNIQUE(authorEmail),
 	UNIQUE(authorUserName),
+	INDEX(authorEmail), -- add in index
 	PRIMARY KEY(authorId)
 );
 
@@ -31,6 +32,7 @@ CREATE TABLE article (
 	articleContent TEXT(21845),
 	articleDate DATETIME(6) NOT NULL,
 	articleImage VARCHAR(128),
+	INDEX(articleAuthorId), --add in index
 	FOREIGN KEY (articleAuthorId) REFERENCES author(authorId),
 	PRIMARY KEY(articleId)
 );
@@ -39,6 +41,8 @@ CREATE TABLE article (
 CREATE TABLE articleTag (
 	articleTagArticleId BINARY(16) NOT NULL,
 	articleTagTagId BINARY(16) NOT NULL,
+	INDEX(articleTagArticleId), -- add in index
+	INDEX(articleTagTagId), -- add in index
 	FOREIGN KEY(articleTagArticleId) REFERENCES article(articleId),
 	FOREIGN KEY(articleTagTagId) REFERENCES tag(tagId),
 	PRIMARY KEY(articleTagArticleId, articleTagTagId)
